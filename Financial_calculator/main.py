@@ -30,7 +30,7 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
-#This will print if the user picks 1
+#This will print if the user prints 1
 def savings_goal_calculator():
     goal = float(input("\nEnter your savings goal: $"))
     deposit = float(input("Enter your weekly or monthly deposit: $"))
