@@ -3,13 +3,14 @@
 import csv
 
 # Function to load movies from a file
-def load_movies(filename):
+def load_movies():
     movies = []
     try:
-        with open(filename, "r", encoding="utf-8") as file:
-            reader = csv.DictReader(file)
+        with open("movie recommender/Movies list.csv", "r", encoding="utf-8") as file:
+            reader = csv.reader(file)
+            next(file)
             for row in reader:
-                row["Length"] = int(row["Length"])  # Convert movie length to integer
+                row[4] = int(row[4])  # Convert movie length to integer
                 movies.append(row)
     except FileNotFoundError:
         print("Error: File not found. Make sure the movie list file is in the same directory.")
@@ -71,7 +72,7 @@ def display_movies(movies):
 # Main function
 def main():
     filename = "movies.csv"  # Replace with the actual filename
-    movies = load_movies(filename)
+    movies = load_movies()
     
     if not movies:
         return
