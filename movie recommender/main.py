@@ -20,13 +20,13 @@ def load_movies():
 def filter_movies(movies, filters):
     filtered_movies = movies
     if "genre" in filters:
-        filtered_movies = [m for m in filtered_movies if filters["genre"].lower() in m["Genre"].lower()]
+        filtered_movies = [m for m in filtered_movies if filters["genre"].lower() in m[2].lower()]
     if "director" in filters:
-        filtered_movies = [m for m in filtered_movies if filters["director"].lower() in m["Director"].lower()]
+        filtered_movies = [m for m in filtered_movies if filters["director"].lower() in m[1].lower()]
     if "actor" in filters:
-        filtered_movies = [m for m in filtered_movies if filters["actor"].lower() in m["Actors"].lower()]
+        filtered_movies = [m for m in filtered_movies if filters["actor"].lower() in m[5].lower()]
     if "min_length" in filters and "max_length" in filters:
-        filtered_movies = [m for m in filtered_movies if filters["min_length"] <= m["Length"] <= filters["max_length"]]
+        filtered_movies = [m for m in filtered_movies if filters["min_length"] <= m[4] <= filters["max_length"]]
     return filtered_movies
 
 # Function to get user filters
@@ -67,7 +67,7 @@ def display_movies(movies):
     else:
         print("\nRecommended Movies:")
         for movie in movies:
-            print(f"{movie['Title']} - {movie['Genre']} - {movie['Director']} - {movie['Length']} min - Starring: {movie['Actors']}")
+            print(f"{movie[0]} - {movie[2]} - {movie[1]} - {movie[4]} min - Starring: {movie[5]}")
 
 # Main function
 def main():
