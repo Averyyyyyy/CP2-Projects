@@ -28,11 +28,11 @@ def view_tasks():
             print(f"{idx}. {task}")
 
 def add_task():
-    #Prompt the user to enter a task and add it to the to-do list.
+    #Prompt the user to enter a task and add it to the to-do list
     task = input("Enter a new task: ").strip()
     if task:  # Ensure the task is not empty
         tasks = load_tasks()
-        tasks.append(f"[ ] {task}")  # Add task with incomplete status
+        tasks.append(f"[ ] {task}")  #Add task with incomplete status
         save_tasks(tasks)
         print("Task added successfully.")
     else:
@@ -49,7 +49,7 @@ def mark_task_complete():
     try:
         task_num = int(input("Enter the number of the task to mark as complete: ")) - 1
         if 0 <= task_num < len(tasks) and tasks[task_num].startswith("[ ]"):
-            tasks[task_num] = tasks[task_num].replace("[ ]", "[X]", 1)  # Mark as complete
+            tasks[task_num] = tasks[task_num].replace("[ ]", "[X]", 1)  #Mark as complete
             save_tasks(tasks)
             print("Task marked as complete.")
         else:
@@ -58,7 +58,7 @@ def mark_task_complete():
         print("Please enter a valid number.")
 
 def delete_task():
-    #Delete a task from the to-do list.
+    #Delete a task from the to-do list
     tasks = load_tasks()
     if not tasks:
         print("No tasks to delete.")
@@ -68,7 +68,7 @@ def delete_task():
     try:
         task_num = int(input("Enter the number of the task to delete: ")) - 1
         if 0 <= task_num < len(tasks):
-            del tasks[task_num]  # Remove the selected task
+            del tasks[task_num]  #Remove the selected task
             save_tasks(tasks)
             print("Task deleted successfully.")
         else:
@@ -77,7 +77,7 @@ def delete_task():
         print("Please enter a valid number.")
 
 def main():
-    #Main loop to interact with the to-do list manager.
+    #Main loop to interact with the to-do list manager
     while True:
         print("\nTo-Do List Manager")
         print("1. View Tasks")
