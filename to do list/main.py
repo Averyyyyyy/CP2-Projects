@@ -3,7 +3,7 @@
 import os
 
 # Define the file name where tasks will be stored
-todo_file = "todo_list.txt"
+todo_file = "to do list/todo_list.txt"
 
 def load_tasks():
     #Load tasks from the file. If the file doesn't exist, return an empty list.
