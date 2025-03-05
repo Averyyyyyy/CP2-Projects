@@ -1,6 +1,6 @@
 To do list
 1.Get up
 2.Eat
-3.Make bed
 4.Get on the bus
 5.Arrive at school
+[ ] hi

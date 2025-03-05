@@ -1,6 +1,6 @@
 #Avery bowman, To do list
 
-TODO_FILE = "todolist/todo_list.txt"
+TODO_FILE = "to do list/todo_list.txt"
 def load_tasks():
     """Load tasks from the to-do file."""
     try:
@@ -46,7 +46,7 @@ def main():
         print("1. View tasks")
         print("2. Add task")
         print("3. Delete task")
-        print(". Exit")
+        print("4. Exit")
        
         choice = input("Enter your choice: ")
        
