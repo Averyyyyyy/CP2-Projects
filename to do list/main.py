@@ -36,7 +36,7 @@ def add_task(task):
 def completed_task()
     tasks = load_tasks()
 
-
+#end here
 def delete_task(index):
     #Delete a task from the list.
     tasks = load_tasks()
