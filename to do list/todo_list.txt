@@ -1,6 +1,5 @@
-To do list
-1.Get up
-2.Eat
-4.Get on the bus
-5.Arrive at school
+[X]Eat
+[ ]Get on the bus
+[ ]Arrive at school
+[X] hi
 [ ] hi

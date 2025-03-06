@@ -67,15 +67,16 @@ def main():
         print("5. Exit")
     
         choice = input("Enter your choice: ")
-       
+        
         if choice == "1":
             display_tasks(load_tasks())
         elif choice == "2":
             task = input("Enter the task: ")
-            #needs to be completed
+            add_task(task)
         elif choice == "3":
             display_tasks(load_tasks())
             index = int(input("Select the task to mark as completed: "))
+            completed_task(index)
             completed_task(index)
         elif choice == "4":
             display_tasks(load_tasks())
