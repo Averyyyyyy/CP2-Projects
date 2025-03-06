@@ -32,11 +32,21 @@ def add_task(task):
     save_tasks(tasks)
     print("Task added!")
 
-    #Mark as completed (not done yet)
-def completed_task()
+#Mark as completed (not done yet)
+def completed_task(index):
     tasks = load_tasks()
+    if 1 <= index <= len(tasks):
+        task = tasks[index - 1]
+        if task.startswith("[ ]"):
+            # Replace the uncompleted marker "[ ]" with completed marker "[X]"
+            tasks[index - 1] = "[X]" + task[3:]
+            save_tasks(tasks)
+            print("Task marked as completed!")
+        else:
+            print("Task is already completed.")
+    else:
+        print("Invalid task number.")
 
-#end here
 def delete_task(index):
     #Delete a task from the list.
     tasks = load_tasks()
@@ -55,18 +65,17 @@ def main():
         print("3. Mark as done")
         print("4. Delete task")
         print("5. Exit")
-       
         choice = input("Enter your choice: ")
-       
+        
         if choice == "1":
             display_tasks(load_tasks())
         elif choice == "2":
             task = input("Enter the task: ")
-            #needs to be completed
+            add_task(task)
         elif choice == "3":
             display_tasks(load_tasks())
             index = int(input("Select the task to mark as completed: "))
-
+            completed_task(index)
         elif choice == "4":
             display_tasks(load_tasks())
             index = int(input("Enter task number to delete: "))
