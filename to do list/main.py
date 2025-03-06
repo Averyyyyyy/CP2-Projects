@@ -35,13 +35,13 @@ def completed_task(index):
     tasks = load_tasks()
     if 1 <= index <=len(tasks):
         task = tasks[index -1]
-        if task.starswith("[]"):
-            #Replace the uncompleted marker "[]" with completed marker [x]
+        if task.startswith("[x]"):
+            #Replace the uncompleted marker "[]" with completed marker [x] 
+            print("Task has already been completed.")
+        else:
             tasks[index -1] = "[x]" + task[3:]
             save_tasks(tasks)
-            print("Task is marked as completed.")
-        else:
-            print("Task is already comleted.")
+            print("Task is completed.")
     else:
         print("Invalid task number.")
 
@@ -74,7 +74,6 @@ def main():
         elif choice == "3":
             display_tasks(load_tasks())
             index = int(input("Select the task to mark as completed: "))
-            completed_task(index)
             completed_task(index)
         elif choice == "4":
             display_tasks(load_tasks())

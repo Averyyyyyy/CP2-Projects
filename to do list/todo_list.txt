@@ -3,3 +3,4 @@
 [ ] Clean bathroom
 [ ] Make dinner
 [ ]  Go to the store
+[ ] Make bed
