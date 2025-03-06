@@ -1,5 +1,5 @@
-[X]Eat
 [ ]Get on the bus
 [ ]Arrive at school
-[X] hi
-[ ] hi
+[ ] Clean bathroom
+[ ] Make dinner
+[ ]  Go to the store

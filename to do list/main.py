@@ -2,7 +2,6 @@
 
 TODO_FILE = "to do list/todo_list.txt"
 def load_tasks():
-
     #Load tasks from the to-do file.
     try:
         with open(TODO_FILE, "r") as file:
@@ -17,7 +16,6 @@ def save_tasks(tasks):
             file.write(task + "\n")
 
 def display_tasks(tasks):
-
     #Display the to-do list.
     if not tasks:
         print("No tasks in the to-do list.")
@@ -32,7 +30,7 @@ def add_task(task):
     save_tasks(tasks)
     print("Task added!")
 
-    #Mark as completed (not done yet)
+    #Mark task as completed
 def completed_task(index):
     tasks = load_tasks()
     if 1 <= index <=len(tasks):
