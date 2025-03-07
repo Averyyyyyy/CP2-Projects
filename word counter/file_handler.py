@@ -1,4 +1,3 @@
-# Filename: file_handler.py
 # Module for reading and writing file contents
 
 def read_file_content(file_path):

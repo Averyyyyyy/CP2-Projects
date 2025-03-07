@@ -1,4 +1,3 @@
-# Filename: text_analyzer.py
 # Module for text analysis and timestamp generation
 
 import re
@@ -16,4 +15,4 @@ def count_words(text):
 
 def get_current_timestamp():
     # Generate a formatted timestamp
-    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return datetime.now().strftime()

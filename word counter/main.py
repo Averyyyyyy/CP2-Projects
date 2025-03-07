@@ -1,5 +1,5 @@
-# Filename: main.py
-# Main entry point for the word counting application
+#Avery bowman word counter
+#Main entry point for the word counting application
 
 # Import necessary modules
 import sys
@@ -26,7 +26,7 @@ def setup_argument_parser():
                              help='URL of the web page to analyze')
     
     return parser
-
+#returns it here
 
 def process_file_document(file_path):
     # Read the content of the document
@@ -38,7 +38,7 @@ def process_file_document(file_path):
     # Get current timestamp
     timestamp = get_current_timestamp()
     
-    # Update the file with word count and timestamp
+    # Update the file with word count and timestamp (the current time)
     update_file_with_stats(file_path, word_count, timestamp)
     
     # Print results to console
@@ -57,7 +57,7 @@ def process_web_document(url):
     word_count = count_words(web_content)
     
     # Get current timestamp
-    timestamp = get_current_timestamp()
+    timestamp = get_current_timestamp(word_count) #might be wrong so fix maybe
     
     # Print results to console
     print(f"Web page scanned: {url}")

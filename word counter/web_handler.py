@@ -1,4 +1,3 @@
-# Filename: web_handler.py
 # Module for fetching and processing web content
 
 import requests
