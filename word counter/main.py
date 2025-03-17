@@ -40,14 +40,6 @@ def process_file_document(file_path):
     
     # Update the file with word count and timestamp (the current time)
     update_file_with_stats(file_path, word_count, timestamp)
-    
-    # Print results to console
-    print(f"File processed: {file_path}")
-    print(f"Word Count: {word_count}")
-    print(f"Timestamp: {timestamp}")
-    
-    return word_count
-
 
 def process_web_document(url):
     # Fetch content from the web
