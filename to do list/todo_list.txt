@@ -1,6 +1,5 @@
-[ ]Get on the bus
-[ ]Arrive at school
-[ ] Clean bathroom
-[ ] Make dinner
-[ ]  Go to the store
-[ ] Make bed
+~ Get up
+~ Eat
+~ Make bed
+~ Get on the bus
+~ Arrive at school
