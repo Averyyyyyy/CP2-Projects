@@ -4,7 +4,7 @@ import random
 import string
 
 def get_user_preferences():
-    """Ask the user for their password requirements."""
+    # Ask the user for their password requirements.
     length = int(input("Enter the desired length of the password: "))
     include_uppercase = input("Include uppercase letters? (yes/no): ").lower() == "yes"
     include_lowercase = input("Include lowercase letters? (yes/no): ").lower() == "yes"
@@ -13,7 +13,7 @@ def get_user_preferences():
     return length, include_uppercase, include_lowercase, include_numbers, include_special_chars
 
 def generate_character_pool(include_uppercase, include_lowercase, include_numbers, include_special_chars):
-    """Create a pool of characters based on user preferences."""
+    # Create a pool of characters based on user preferences.
     character_pool = ""
     if include_uppercase:
         character_pool += string.ascii_uppercase

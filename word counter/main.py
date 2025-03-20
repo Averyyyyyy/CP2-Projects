@@ -52,6 +52,7 @@ def process_web_document(url):
     timestamp = get_current_timestamp(word_count) #might be wrong so fix maybe
     
     # Print results to console
+    print()
     print(f"Web page scanned: {url}")
     print(f"Word Count: {word_count}")
     print(f"Timestamp: {timestamp}")

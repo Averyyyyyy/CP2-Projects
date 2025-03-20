@@ -4,7 +4,7 @@
 music_library = []
 
 def add_item():
-    """Add a new item to the library."""
+    # Add a new item to the library
     title = input("Enter the title of the song: ").strip()
     artist = input("Enter the artist's name: ").strip()
     album = input("Enter the album name: ").strip()
@@ -20,7 +20,7 @@ def add_item():
     print(f"'{title}' by {artist} added to your library.")
 
 def display_items(detailed=False):
-    """Display all items in the library."""
+    # Display all items in the library
     if not music_library:
         print("Your music library is empty.")
     else:
@@ -33,7 +33,7 @@ def display_items(detailed=False):
         print()  # Add blank line for spacing
 
 def search_item():
-    """Search for an item in the library by title or artist."""
+    # Search for an item in the library by title or artist
     search_term = input("Enter the title or artist to search for: ").strip().lower()
     found_items = [
         item for item in music_library
@@ -48,7 +48,7 @@ def search_item():
         print("No matching items found.")
 
 def update_item():
-    """Update details of an existing item."""
+    # Update details of an existing item.
     title_to_update = input("Enter the title of the song to update: ").strip().lower()
     
     for item in music_library:
@@ -72,7 +72,7 @@ def update_item():
     print("No item with that title found.")
 
 def remove_item():
-    """Remove an item from the library by title."""
+    # Remove an item from the library by title.
     title_to_remove = input("Enter the title of the song to remove: ").strip().lower()
 
     for item in music_library:
@@ -84,7 +84,7 @@ def remove_item():
     print("No item with that title found.")
 
 def run_program():
-    """Run the program with a menu and loop."""
+    # Run the program with a menu and loop
     while True:
         print("\nMusic Library Menu:")
         print("1. Add a new item")
