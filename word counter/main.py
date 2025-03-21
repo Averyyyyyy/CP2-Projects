@@ -1,79 +1,24 @@
-#Avery bowman word counter
-#Main entry point for the word counting application
+# Avery bowman word counter
 
-# Import necessary modules
-import sys
-import os
-import argparse
-from file_handler import read_file_content, update_file_with_stats
-from web_handler import fetch_web_content
-from text_analyzer import count_words, get_current_timestamp
-
-
-def setup_argument_parser():
-    # Create an argument parser to handle different input types
-    parser = argparse.ArgumentParser(description="Word Counter Tool")
-    
-    # Mutually exclusive group for input source
-    input_group = parser.add_mutually_exclusive_group(required=True)
-    
-    # Option for local file input
-    input_group.add_argument('-f', '--file', 
-                             help='Path to the local file to analyze')
-    
-    # Option for web URL input
-    input_group.add_argument('-u', '--url', 
-                             help='URL of the web page to analyze')
-    
-    return parser
-#returns it here
-
-def process_file_document(file_path):
-    # Read the content of the document
-    file_content = read_file_content(file_path)
-    
-    # Count the words in the document
-    word_count = count_words(file_content)
-    
-    # Get current timestamp
-    timestamp = get_current_timestamp()
-    
-    # Update the file with word count and timestamp (the current time)
-    update_file_with_stats(file_path, word_count, timestamp)
-
-def process_web_document(url):
-    # Fetch content from the web
-    web_content = fetch_web_content(url)
-    
-    # Count the words in the web content
-    word_count = count_words(web_content)
-    
-    # Get current timestamp
-    timestamp = get_current_timestamp(word_count) #might be wrong so fix maybe
-    
-    # Print results to console
-    print()
-    print(f"Web page scanned: {url}")
-    print(f"Word Count: {word_count}")
-    print(f"Timestamp: {timestamp}")
-    
-    return word_count
-
+import file_handler
+import time_handler
 
 def main():
-    # Set up argument parser
-    parser = setup_argument_parser()
-    
-    # Parse the arguments
-    args = parser.parse_args()
-    
-    # Process based on input type
-    if args.file:
-        process_file_document(args.file)
-    elif args.url:
-        process_web_document(args.url)
+    file_name = input("Enter the name of the file you want to analyze: ")
+   
+    try:
+        content = file_handler.read_file(file_name)
+        word_count = file_handler.count_words(content)
+        timestamp = time_handler.get_current_timestamp()
+       
+        updated_content = file_handler.append_word_count(content, word_count, timestamp)
+        file_handler.write_file(file_name, updated_content)
 
-
-# Ensure the script is run directly
+    # prints if it worked or didn't work
+        print(f"Updated '{file_name}' with word count ({word_count}) and timestamp ({timestamp}).")
+    except FileNotFoundError:
+        print("Error: The file does not exist.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 if __name__ == "__main__":
     main()
