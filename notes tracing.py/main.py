@@ -40,10 +40,25 @@ exception - when there is an exception raised
     #F5
 
 #What is testing?
-    #
+    #Going though the code trying to break it, have testers be not the person who wrote the code
 
 #What are boundary conditions?
+    #User conditions that are strange and/or likely to cause issues
+    #You can check this one by your self
+age = 18
+if age >= 18:
+    print("You can vote")
+elif age >= 16:
+    print("You can drive")
+elif age >= 15:
+    print("You can get your learners permit")
+elif age >= 5:
+    print("You can go to school")
+else:
+    print("To young for everything")
+
 #How do you handle when users give strange inputs?
+    #You can use a conditional, try and accept and then make sure you loop back to the question
 
 def add(num_one, num_two):
     print(num_one, num_two)
