@@ -1,12 +1,12 @@
 #Avery bowman
 
 #What is tracing?
-    #Degbugging method that lets you 
+    #Degbugging method that lets you find any bugs and improve your code
 #python -m trace --trace C:\Users\avery.bowman\.vscode\CP2-Projects\notes tracing.py
 """
 --trace (displays function lines as they are executed)
---count (displays )
---listfuncs (displays the function in the project )
+--count
+--listfuncs (displays the function in the project...)
 --trackcalls (displays relationships between the functions)
 """
 import trace
