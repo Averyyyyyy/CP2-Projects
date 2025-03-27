@@ -7,7 +7,7 @@ def create_character_manager(clear_screen, pause):
     
     # File operation helper functions
     def save_character_to_csv(character):
-        """Save a character to the CSV file."""
+        # Save a character to the CSV file
         file_exists = os.path.isfile("characters.csv")
         with open("characters.csv", mode='a', newline='') as file:
             fieldnames = ['name', 'class', 'level', 'experience', 'health', 'max_health', 

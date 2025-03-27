@@ -1,4 +1,5 @@
 # Avery bowman, battle simulator
+# The code is having a hard time calling the functin sand printing them after the main menu (where you select what number you want to do in the very beggining)
 
 # main.py
 import csv
