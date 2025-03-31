@@ -2,7 +2,7 @@ import csv
 import os
 
 # Define the CSV file path (ensure it's in the same directory as the Python file)
-CSV_FILE = "coins.csv"
+CSV_FILE = "coin change\coins.csv"
 
 # Function to get available countries from the CSV file
 def get_available_countries():
@@ -109,4 +109,11 @@ def main():
     # Step 5: Solve the Coin Change problem and display results
     num_coins, coins_used = coin_change(target, coins)
     
-    if num_coins == float
+    if num_coins == float('inf'):
+       print("It's not possible to make that target amount with the given coins.")
+    else:
+       print(f"Minimum number of coins needed: {num_coins}")
+       print(f"Coins used: {', '.join(coins_used)}")
+
+if __name__ == "__main__":
+   main()
