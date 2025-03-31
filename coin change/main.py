@@ -3,124 +3,125 @@
 import csv
 import os
 
+# Get the absolute path to ensure the file is always found
+CSV_FILE = os.path.join(os.path.dirname(__file__), "coins.csv")
+
 
 def get_available_countries():
-   # Reads the 'coins.csv' file and extracts a list of available countries.
-   # Returns a list of country names.
+  
+   #Reads the 'coins.csv' file and extracts a list of available countries.
+   #Returns a list of countries that are available in the file.
+
    try:
-       with open("coins.csv", mode="r") as file:
+       with open(CSV_FILE, mode="r") as file:
            reader = csv.reader(file)
            countries = [row[0].strip() for row in reader if row]  # Get first column (country names)
        return countries if countries else []
    except FileNotFoundError:
-       print("Error: 'coins.csv' file not found.")
+       print(f"Error: '{CSV_FILE}' not found.")
        return []
 
 
 def load_coin_denominations(country):
-   # Loads coin denominations for a given country from the 'coins.csv' file.
-   # Returns a sorted list of (coin_name, coin_value) tuples.
+  
+  # Loads the coin denominations for the given country from the CSV file.
+  # Returns a dictionary of coin names and their respective values.
+  
    try:
-       with open("coins.csv", mode="r") as file:
+       with open(CSV_FILE, mode="r") as file:
            reader = csv.reader(file)
            for row in reader:
-               if row[0].strip().lower() == country.lower():
-                   coins = row[1:]  # Extract coin denominations
-                   denominations = []
-                   for coin in coins:
-                       try:
-                           name, value = coin.split("-")
-                           denominations.append((name.strip(), int(value.strip())))
-                       except ValueError:
-                           print(f"Invalid format in file for {country}: {coin}")
-                           return []
-                   return sorted(denominations, key=lambda x: x[1], reverse=True)  # Sort by value (descending)
-       print(f"Country '{country}' not found in the file.")
-       return []
+               if row and row[0].strip().lower() == country.strip().lower():  # Match country name (case-insensitive)
+                   coins = {coin.split('-')[0].strip(): int(coin.split('-')[1].strip()) for coin in row[1:]}
+                   return coins
+       # If country not found
+       print(f"Country '{country}' not found in the CSV file.")
    except FileNotFoundError:
-       print("Error: 'coins.csv' file not found.")
-       return []
+       print(f"Error: '{CSV_FILE}' not found.")
+   return {}
 
 
-def coin_change(target_amount, denominations):
-   # Solves the Coin Change Problem using a greedy approach.
-   # Returns the minimum number of coins needed and their names.
-   if target_amount <= 0:
-       return 0, []
-
-
-   min_coins = 0
-   coins_used = []
-
-
-   for coin_name, coin_value in denominations:
-       count = target_amount // coin_value
-       if count > 0:
-           min_coins += count
-           coins_used.extend([coin_name] * count)
-           target_amount -= count * coin_value
-
-
-       if target_amount == 0:
-           break
-
-
-   if target_amount > 0:
-       print("Exact change cannot be made with the available denominations.")
-       return -1, []
+def coin_change(target, coins):
   
-   return min_coins, coins_used
+   # Solves the Coin Change problem: Returns the minimum number of coins and which coins to use.
+   # Uses dynamic programming to compute the result.
+  
+   dp = [float('inf')] * (target + 1)
+   dp[0] = 0
+   coin_used = [-1] * (target + 1)
+  
+   for i in range(1, target + 1):
+       for coin, value in coins.items():
+           if i >= value and dp[i - value] + 1 < dp[i]:
+               dp[i] = dp[i - value] + 1
+               coin_used[i] = coin
+  
+   # Backtrack to find the coins used
+   coins_used = []
+   if dp[target] == float('inf'):
+       return dp[target], coins_used  # No solution found
+  
+   current_amount = target
+   while current_amount > 0:
+       coin = coin_used[current_amount]
+       if coin == -1:
+           break
+       coins_used.append(coin)
+       current_amount -= coins[coin]
+  
+   return dp[target], coins_used[::-1]  # Return the coins used in correct order
 
 
 def main():
-   # Main function to interact with the user and execute the coin change logic.
    print("Welcome to the Coin Change Solver!")
   
-   # This might be the problem beacuse it cant grab the names form the csv
-   # List available countries
+   # Display available countries
    countries = get_available_countries()
    if not countries:
-       print("No countries found in 'coins.csv'. Exiting...")
+       print("No countries found in the coin file.")
        return
-
-
-   print("\nAvailable countries:")
-   for country in countries:
-       print(f" - {country}")
-
-
-   # Ask user for input
-   country = input("\nEnter the country from the list above: ").strip()
-   if country not in countries:
-       print("Invalid country. Please restart and select from the available options.")
-       return
-
-
-   denominations = load_coin_denominations(country)
-
-
-   if not denominations:
-       print("No valid denominations found. Exiting...")
-       return
-
-
+  
+   print("Please choose a country from the following options:")
+   for i, country in enumerate(countries, 1):
+       print(f"{i}. {country}")
+  
+   # Get user input for the country
    try:
-       target_amount = int(input("Enter the target amount: ").strip())
-       if target_amount < 0:
-           print("Please enter a non-negative target amount.")
+       country_choice = int(input("Enter the number corresponding to your chosen country: ")) - 1
+       if country_choice < 0 or country_choice >= len(countries):
+           print("Invalid choice. Exiting.")
            return
    except ValueError:
-       print("Invalid input. Please enter a valid number.")
+       print("Invalid input. Exiting.")
        return
-
-
-   min_coins, coins_used = coin_change(target_amount, denominations)
-
-
-   if min_coins == -1:
-       print("No valid combination found for the given amount.")
+  
+   country = countries[country_choice]
+  
+   # Load the coin denominations for the selected country
+   coins = load_coin_denominations(country)
+   if not coins:
+       print(f"Error loading coin denominations for {country}.")
+       return
+  
+   print(f"Available coin denominations for {country}: {coins}")
+  
+   # Get user input for the target amount
+   try:
+       target = int(input("Enter the target amount: "))
+       if target <= 0:
+           print("Target amount must be positive. Exiting.")
+           return
+   except ValueError:
+       print("Invalid target amount. Please enter a valid number. Exiting.")
+       return
+  
+   # Solve the Coin Change problem
+   num_coins, coins_used = coin_change(target, coins)
+  
+   if num_coins == float('inf'):
+       print("It's not possible to make that target amount with the given coins.")
    else:
-       print(f"Minimum number of coins needed: {min_coins}")
+       print(f"Minimum number of coins needed: {num_coins}")
        print(f"Coins used: {', '.join(coins_used)}")
 
 

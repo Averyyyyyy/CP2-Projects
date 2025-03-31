@@ -1,20 +1,3 @@
-# Coins to ratio thing
-import csv
-
-# Countries Data
-countries = ["USA", "Canada", "UK", "Euro"]
-
-# Data for the coin denominations
-coin_data = [
-    ["USA", "Penny-1", "Nickel-5", "Dime-10", "Quarter-25", "Half Dollar-50"],
-    ["Canada", "Cent-1", "Nickel-5", "Dime-10", "Quarter-25", "Loonie-100", "Toonie-200"],
-    ["UK", "Penny-1", "Two Pence-2", "Five Pence-5", "Ten Pence-10", "Twenty Pence-20", "Fifty Pence-50", "One Pound-100", "Two Pounds-200"],
-    ["Euro", "One Cent-1", "Two Cents-2", "Five Cents-5", "Ten Cents-10", "Twenty Cents-20", "Fifty Cents-50", "One Euro-100", "Two Euros-200"]
-]
-
-# Create the CSV file
-with open("coins.csv", mode="w", newline="") as file:
-    writer = csv.writer(file)
-    writer.writerows(coin_data)
-
-print("coins.csv file has been created successfully!")
+USA, Penny-1, Nickel-5, Dime-10, Quarter-25
+UK, Penny-1, Nickel-5, Dime-10, Quarter-25
+Canada, Nickel-5, Dime-10, Quarter-25
