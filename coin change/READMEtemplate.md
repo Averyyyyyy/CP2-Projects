@@ -1,10 +1,4 @@
-# Coin change
-
-## Installation
----
-1. instruction one
-2. instruction two
-3. instruction three  
+# Coin change 
 
 ## Execution and usage
 ---
