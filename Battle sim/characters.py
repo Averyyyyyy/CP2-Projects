@@ -4,9 +4,9 @@ from file import characters
 
 def character_menu():
     def create_character():
-        name = input("Enter character name: ")
+        name = input("Enter the characters name: ")
         if name in characters:
-            print("Character already exists.")
+            print("The character already exists.")
             return
         characters[name] = {
             'name': name,
@@ -28,8 +28,8 @@ def character_menu():
 
     while True:
         print("\nCharacter Menu:")
-        print("1. Create Character")
-        print("2. View Characters")
+        print("1. Create your Character")
+        print("2. View all the Characters")
         print("3. Back to Main Menu")
         choice = input("Choose an option: ")
         if choice == '1':

@@ -44,14 +44,14 @@ def battle_menu():
     for name in characters:
         print(name)
 
-    name1 = input("Enter name of first character: ")
-    name2 = input("Enter name of second character: ")
+    name1 = input("Enter name of your first character: ")
+    name2 = input("Enter name of your second character: ")
 
     if name1 not in characters or name2 not in characters:
-        print("Character not found.")
+        print("Character is not found.")
         return
     if name1 == name2:
-        print("Cannot battle the same character.")
+        print("You can't battle the same character.")
         return
 
     battle(characters[name1], characters[name2])
