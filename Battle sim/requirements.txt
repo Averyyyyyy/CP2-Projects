@@ -1,5 +1,0 @@
-# Avery bowman
-
-matplotlib==3.7.1
-pandas==2.0.1
-faker==18.10.1

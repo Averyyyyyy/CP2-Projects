@@ -1,20 +1,7 @@
-# Avery bowman
-
-import os
-import platform
-
-def clear_screen():
-    # Clear the console screen for better UI experience
-    # Check the operating system and use the appropriate command
-    if platform.system() == "Windows":
-        os.system('cls')
-    else:  # For Linux and MacOS
-        os.system('clear')
-
-def print_header(title):
-    # Print a formatted header with the title
-    width = 50
-    print("=" * width)
-    print(f"{title.center(width)}")
-    print("=" * width)
-    print()
+def display_character(char):
+    print(f"\nName: {char['name']}")
+    print(f"Level: {char['level']} | XP: {char['xp']}")
+    print(f"Health: {char['health']}")
+    print(f"Strength: {char['strength']}")
+    print(f"Defense: {char['defense']}")
+    print(f"Speed: {char['speed']}\n")
