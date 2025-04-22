@@ -3,8 +3,9 @@
 from financial_calculator import 
 from password_gen import 
 from rock_paper_scissors import 
-from  import 
-from  import 
+from simple_morse_code_trans import 
+from simple_quiz import 
+from todo_list import 
 
 def menu():
     shapes = []
