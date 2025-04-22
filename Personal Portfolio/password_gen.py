@@ -1,4 +1,4 @@
-#Avery password generator
+# Avery password generator
 
 import random
 import string

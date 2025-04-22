@@ -1,4 +1,4 @@
-#Avery, simple morse code translator
+# Avery, simple morse code translator
 
 # Create two lists, one for english letters and one for Morse Code symbols
 english_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
