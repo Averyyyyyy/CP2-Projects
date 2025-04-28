@@ -1,3 +1,4 @@
+# file.py
 import csv
 import os
 
@@ -7,10 +8,12 @@ CHARACTER_FILE = 'characters.csv'
 def save_characters():
     with open(CHARACTER_FILE, mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(['Name', 'Health', 'Strength', 'Defense', 'Speed', 'Level', 'XP'])
+        writer.writerow(['Name', 'Health', 'Strength', 'Defense', 'Speed', 'Level', 'XP', 'Backstory', 'Skills'])
         for char in characters.values():
-            writer.writerow([char['name'], char['health'], char['strength'], char['defense'],
-                             char['speed'], char['level'], char['xp']])
+            writer.writerow([
+                char['name'], char['health'], char['strength'], char['defense'],
+                char['speed'], char['level'], char['xp'], char.get('backstory', ''), '|'.join(char.get('skills', []))
+            ])
 
 def load_characters():
     if not os.path.exists(CHARACTER_FILE):
@@ -25,5 +28,7 @@ def load_characters():
                 'defense': int(row['Defense']),
                 'speed': int(row['Speed']),
                 'level': int(row['Level']),
-                'xp': int(row['XP'])
+                'xp': int(row['XP']),
+                'backstory': row.get('Backstory', ''),
+                'skills': row.get('Skills', '').split('|') if row.get('Skills') else []
             }
