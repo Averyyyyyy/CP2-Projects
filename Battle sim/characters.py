@@ -2,7 +2,7 @@
 import random
 from faker import Faker
 import pandas as pd
-from utils import display_character, plot_character_stats, radar_chart
+from utils import display_character, plot_character_stats
 from file import characters
 
 fake = Faker()
@@ -50,7 +50,7 @@ def character_menu():
         name = input("Enter character name to visualize: ")
         if name in characters:
             plot_character_stats(characters[name])
-            radar_chart(characters[name])
+            (characters[name])
         else:
             print("Character not found.")
 
